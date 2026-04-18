@@ -2,28 +2,30 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>ASR City</title>
 
-  <!-- Manifest -->
-  <link rel="manifest" href="manifest.json"/>
-
-  <!-- Цвет темы -->
-  <meta name="theme-color" content="#ff6600"/>
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#ff6600">
 
 </head>
-<body>
 
+<body>
   <h1>ASR City</h1>
   <p>Сеть автозапчастей</p>
 
-  <!-- Кнопка установки -->
-  <button id="installBtn" style="display:none; padding:10px; font-size:16px;">
-    📲 Установить приложение
+  <button onclick="alert('Заявка отправлена!')">
+    Оставить заявку
   </button>
 
-  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(() => console.log("Service Worker OK"))
+        .catch(err => console.log("SW ERROR", err));
+    }
+  </script>
 
 </body>
 </html>
